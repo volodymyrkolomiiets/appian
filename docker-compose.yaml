@@ -1,0 +1,19 @@
+version: "3.1"
+
+services:
+  user_db:
+    image: "mysql:${TAG_MY_SQL}"
+    ports:
+      - "33061:3306"
+    restart: always
+    env_file:
+      - user_service/dev-user-variables.env
+    networks:
+      user_networks:
+    volumes:
+      - ./dev_user_service/.mysql-userdata/db:/var/lib/mysql
+
+
+
+networks:
+  user_networks:
